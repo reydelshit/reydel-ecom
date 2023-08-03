@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { buttonVariants } from '@/components/ui/button';
 import { Button } from '@/components/ui/button';
 
@@ -14,12 +14,14 @@ interface SideBarProps {
 
 export default function SideBar({ links }: SideBarProps) {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
-    <div className="flex flex-col border-r-2 p-4 h-screen w-[25rem]">
+    <div className="flex flex-col border-r-2 p-4 h-screen w-[20rem]">
       {links.map((link, index) => {
         return (
           <Button
+            onClick={() => router.push(link.link)}
             key={index}
             variant="ghost"
             className={`${
@@ -28,7 +30,9 @@ export default function SideBar({ links }: SideBarProps) {
                 : 'hover:bg-transparent'
             } text-black p-2 justify-start`}
           >
-            <Link href={link.link}>{link.name}</Link>
+            {/* <Link onClick={() => router.push(link.link)} href={link.link}> */}
+            {link.name}
+            {/* </Link> */}
           </Button>
         );
       })}

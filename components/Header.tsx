@@ -24,7 +24,7 @@ export default function Header() {
   // console.log(session?.user.)
 
   return (
-    <header className="flex h-[5rem] border-2 items-center justify-between px-5">
+    <header className="flex h-[5rem] border-b-2 border-white items-center justify-between px-5 bg-black text-white">
       <h1>Header</h1>
 
       <div className="flex gap-5">

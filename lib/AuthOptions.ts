@@ -1,8 +1,6 @@
 import { prisma } from '@/prisma/db';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import GoogleProvider from 'next-auth/providers/google';
 import GithubProvider from 'next-auth/providers/github';
 
 export const authOptions: NextAuthOptions = {
@@ -12,14 +10,15 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
 
-      // profile(profile) {
-      //   return {
-      //     id: String(profile.id),
-      //     name: profile.login,
-      //     image: profile.avatar_url,
-      //     role: ,
-      //   };
-      // },
+      profile(profile) {
+        return {
+          id: String(profile.id),
+          name: profile.login,
+          image: profile.avatar_url,
+          role: profile.role,
+          createdAt: profile.created_at,
+        };
+      },
     }),
   ],
   callbacks: {
@@ -27,6 +26,7 @@ export const authOptions: NextAuthOptions = {
       if (session?.user) {
         session.user.id = user.id;
         session.user.role = user.role;
+        // session.user.createdAt = user.crea;
       }
       return session;
     },

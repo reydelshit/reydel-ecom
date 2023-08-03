@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ProductForm from './components/ProductForm';
 import ListProducts from './components/ListProducts';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
   const [searchValue, setSearchValue] = useState('');
@@ -14,7 +15,7 @@ export default function Page() {
   return (
     <div className="w-full">
       <Tabs defaultValue="product">
-        <div className="flex justify-between items-center w-full border-2 p-2 h-20">
+        <div className="flex justify-between items-center w-full p-2 h-20">
           <TabsList className="w-[400px] h-[3rem]">
             <TabsTrigger value="product">Products</TabsTrigger>
             <TabsTrigger value="add-product">Add Products</TabsTrigger>
