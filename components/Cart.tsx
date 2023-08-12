@@ -2,6 +2,7 @@ import { getAllProductsCart } from '@/lib/getProductCart';
 import { User } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 
 interface Cart {
@@ -16,6 +17,8 @@ interface Cart {
   userId?: string | null;
 }
 export function Cart() {
+  const router = useRouter();
+
   const [cart, setCart] = useState<Cart[]>([]);
 
   async function fetchProduct() {
@@ -71,7 +74,12 @@ export function Cart() {
       </div>
 
       <div className="self-end">
-        <Button className="btn btn-primary">Checkout</Button>
+        <Button
+          className="btn btn-primary"
+          onClick={() => router.push('/checkout')}
+        >
+          Checkout
+        </Button>
       </div>
     </div>
   );
