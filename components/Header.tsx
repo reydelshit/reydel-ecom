@@ -27,7 +27,9 @@ export default function Header() {
 
   return (
     <header className="flex h-[5rem] border-b-2 border-white items-center justify-between px-5 bg-[#884A39] text-white">
-      <h1>Header</h1>
+      <h1 className="cursor-pointer">
+        <Link href="/">Header</Link>
+      </h1>
 
       <div className="flex gap-5">
         {session?.user?.role === 'ADMIN' && (
