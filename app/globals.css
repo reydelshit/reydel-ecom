@@ -77,6 +77,10 @@
   }
 }
 
+body {
+  background-color: #606c5d;
+}
+
 .spinner {
   width: 11.2px;
   height: 11.2px;

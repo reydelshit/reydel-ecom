@@ -17,20 +17,28 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Cart } from './Cart';
 
 export default function Header() {
   const { data: session } = useSession();
 
-  // console.log(session?.user.)
+  const router = useRouter();
 
   return (
-    <header className="flex h-[5rem] border-b-2 border-white items-center justify-between px-5 bg-black text-white">
+    <header className="flex h-[5rem] border-b-2 border-white items-center justify-between px-5 bg-[#884A39] text-white">
       <h1>Header</h1>
 
       <div className="flex gap-5">
+        {session?.user?.role === 'ADMIN' && (
+          <Button onClick={() => router.push('/admin')}>Admin Panel</Button>
+        )}
+
         <Popover>
           <PopoverTrigger>Cart</PopoverTrigger>
-          <PopoverContent className="mr-16">products here.</PopoverContent>
+          <PopoverContent className="mr-16">
+            <Cart />
+          </PopoverContent>
         </Popover>
         <DropdownMenu>
           <DropdownMenuTrigger>
