@@ -6,7 +6,7 @@ const AdminPage = async () => {
   const session = await getServerSession(authOptions);
 
   if (session?.user?.role != 'ADMIN') {
-    redirect('/dashboard');
+    redirect('/');
   }
 
   //   console.log(session?.user?.role);

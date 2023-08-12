@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { deleteCart } from '@/app/products/actions/deleteCart';
 
 interface Cart {
   id: number;
@@ -28,9 +29,7 @@ export function Cart() {
 
   useEffect(() => {
     fetchProduct();
-
-    console.log(cart);
-  }, [cart]);
+  }, []);
 
   const LoadingCarts = () => {
     return (
@@ -38,6 +37,11 @@ export function Cart() {
         <div className="spinner"></div>
       </div>
     );
+  };
+
+  const handleDeleteCart = (id: number) => {
+    deleteCart(id);
+    fetchProduct();
   };
 
   return (
@@ -48,8 +52,11 @@ export function Cart() {
         <>
           {cart.map((prod) => {
             return (
-              <div className="flex justify-between items-center" key={prod.id}>
-                <div className="flex items-center">
+              <div
+                className="flex flex-row justify-between items-center w-full"
+                key={prod.id}
+              >
+                <div className="w-full flex items-center">
                   <Avatar>
                     <AvatarImage src={prod.image} />
                     <AvatarFallback>{prod.name}</AvatarFallback>
@@ -59,7 +66,11 @@ export function Cart() {
                   </h1>
                 </div>
 
-                <p className="font-bold">₱{prod.price}</p>
+                <p className="font-bold pr-2">₱{prod.price}</p>
+
+                <Button onClick={() => handleDeleteCart(prod.id)}>
+                  Delete
+                </Button>
               </div>
             );
           })}

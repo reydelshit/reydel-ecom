@@ -38,7 +38,7 @@ export default function Header() {
 
         <Popover>
           <PopoverTrigger>Cart</PopoverTrigger>
-          <PopoverContent className="mr-16">
+          <PopoverContent className="mr-16 w-[25rem]">
             <Cart />
           </PopoverContent>
         </Popover>
@@ -55,7 +55,15 @@ export default function Header() {
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link href="/admin/profile">Profile</Link>
+              <Link
+                href={
+                  session?.user?.role === 'ADMIN'
+                    ? '/admin/profile'
+                    : '/user/profile'
+                }
+              >
+                Profile
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <SignOut />

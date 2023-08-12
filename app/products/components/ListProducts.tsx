@@ -21,11 +21,25 @@ export default function ListProducts({
   searchValue: string;
   products: Product[];
 }) {
+  const [quantities, setQuantities] = useState([{ value: 1 }]);
   const [quantity, setQuantity] = useState(1);
+
+  const handleQuantityChange = (index: number, value: number) => {
+    const newQuantities = [...quantities];
+    newQuantities[index] = { value };
+    setQuantities(newQuantities);
+  };
+
+  const incrementQuantity = (index: number) => {
+    const newQuantities = [...quantities];
+    newQuantities[index].value += 1;
+    setQuantities(newQuantities);
+    setQuantity(newQuantities[index].value);
+  };
 
   return (
     <div className="grid grid-cols-4 gap-2 w-full border-2 h-full">
-      {products.map((prod) => {
+      {products.map((prod, index) => {
         return (
           <Card key={prod.id} className="w-[20rem] h-[24rem]">
             <CardHeader>
@@ -46,12 +60,21 @@ export default function ListProducts({
                 <p>₱{prod.price}</p>
 
                 <div className="flex">
-                  <Input
-                    className="w-[5rem]"
-                    placeholder="quantity"
-                    defaultValue={quantity}
-                  />
-                  <Button onClick={() => setQuantity(quantity + 1)}>+</Button>
+                  {quantities.map((quantity, index) => (
+                    <div key={index}>
+                      <Input
+                        className="w-[5rem]"
+                        placeholder="quantity"
+                        value={quantity.value}
+                        onChange={(e) =>
+                          handleQuantityChange(index, Number(e.target.value))
+                        }
+                      />
+                      <Button onClick={() => incrementQuantity(index)}>
+                        +
+                      </Button>
+                    </div>
+                  ))}
                 </div>
               </div>
 

@@ -2,12 +2,21 @@ import SideBar from './components/SideBar';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { Separator } from '@/components/ui/separator';
+import { authOptions } from '@/lib/AuthOptions';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
-const AdminLayout = ({ children }: AdminLayoutProps) => {
+const AdminLayout = async ({ children }: AdminLayoutProps) => {
+  const session = await getServerSession(authOptions);
+
+  if (session?.user?.role != 'ADMIN') {
+    redirect('/');
+  }
+
   const sideBarLinks = [
     {
       name: 'Products',
