@@ -19,6 +19,7 @@ import {
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Cart } from './Cart';
+import { ModeToggle } from './ToggleTheme';
 
 export default function Header() {
   const { data: session } = useSession();
@@ -26,10 +27,12 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <header className="flex h-[5rem] border-b-2 border-white items-center justify-between px-5 bg-[#884A39] text-white">
+    <header className="flex h-[5rem] border-b-2 border-white items-center justify-between px-5">
       <h1 className="cursor-pointer">
         <Link href="/">Header</Link>
       </h1>
+
+      <ModeToggle />
 
       <div className="flex gap-5">
         {session?.user?.role === 'ADMIN' && (

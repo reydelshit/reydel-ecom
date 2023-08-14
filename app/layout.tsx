@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body className={inter.className}>
-          <Header />
-          {children}
-          <footer>copyright reydel ecom 2023</footer>
-        </body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <body className={inter.className}>
+            <Header />
+            {children}
+            <footer>copyright reydel ecom 2023</footer>
+          </body>
+        </ThemeProvider>
       </AuthProvider>
     </html>
   );

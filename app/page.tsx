@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <main className="h-[90vh] relative">
-      <div className="z-40 h-[31rem] overflow-hidden bg-[#884A39] text-[#F9F5F6]">
+      <div className="z-40 h-[31rem] overflow-hidden ">
         <div className="z-40 mt-[22.4rem]">
           <h1 className="text-[10rem] font-bold">Shop with the best.</h1>
         </div>
