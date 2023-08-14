@@ -22,6 +22,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <Header />
           {children}
+          <footer>copyright reydel ecom 2023</footer>
         </body>
       </AuthProvider>
     </html>

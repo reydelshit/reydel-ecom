@@ -35,6 +35,7 @@ export function Cart() {
     return (
       <div className="w-full h-[5rem] flex items-center justify-center">
         <div className="spinner"></div>
+        {/* {cart.length === 0 && <p className="ml-2">Loading Carts...</p>} */}
       </div>
     );
   };
@@ -47,7 +48,10 @@ export function Cart() {
   return (
     <div className="flex flex-col">
       {cart.length === 0 ? (
-        <LoadingCarts />
+        <div className="flex justify-center flex-col items-center">
+          <LoadingCarts />
+          <p className="ml-2">Cart is empty or Loading Cart...</p>
+        </div>
       ) : (
         <>
           {cart.map((prod) => {
