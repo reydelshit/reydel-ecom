@@ -40,7 +40,7 @@ export default function Page() {
 
   return (
     <div className="p-2">
-      <div className="h-[5rem] w-full flex justify-between items-center">
+      <div className="h-[5rem] w-full flex justify-between items-center px-2">
         <Input
           type="text"
           placeholder="search product"

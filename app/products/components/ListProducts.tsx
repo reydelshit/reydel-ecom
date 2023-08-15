@@ -42,7 +42,7 @@ export default function ListProducts({
           return (
             <Card
               key={prod.id}
-              className="w-[20rem] h-[26rem] dark:border-[#241e1c]"
+              className="flex flex-col  justify-center items-center w-[20rem] h-[26rem] dark:border-[#241e1c]"
             >
               <CardHeader>
                 <CardTitle>{prod.name}</CardTitle>
@@ -58,14 +58,14 @@ export default function ListProducts({
                   alt={prod.name}
                 />
               </CardContent>
-              <CardFooter className="flex flex-col mt-[-2rem]">
-                <div className="flex justify-between items-center w-full">
-                  <p>₱{prod.price}</p>
+              <CardFooter className="flex flex-col justify-end mt-[-2rem] w-full">
+                <div className="flex justify-between items-center w-full mt-2">
+                  <p className="font-bold text-[#f97316]">₱{prod.price}</p>
 
                   <Input
                     type="number"
-                    placeholder="quantity"
-                    className=" w-[4rem] text-center h-[3rem]"
+                    placeholder="qty"
+                    className=" w-[4rem] text-center h-[2.5rem] p-0"
                     onChange={(e) => setQuantity(parseInt(e.target.value))}
                   />
                 </div>
