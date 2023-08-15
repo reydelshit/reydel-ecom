@@ -1,6 +1,7 @@
 import { authOptions } from '@/lib/AuthOptions';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 const AdminPage = async () => {
   const session = await getServerSession(authOptions);
@@ -22,7 +23,8 @@ const AdminPage = async () => {
 
   return (
     <div>
-      <h1>Admin Page</h1>
+      {/* <Overview /> */}
+      <h1>rerere</h1>
     </div>
   );
 };

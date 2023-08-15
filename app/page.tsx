@@ -9,24 +9,15 @@ export default async function Home() {
   console.log(session?.user);
 
   return (
-    <main className="h-[90vh] relative">
+    <main className="h-[90vh] relative pl-2">
       <div className="z-40 h-[31rem] overflow-hidden ">
         <div className="z-40 mt-[22.4rem]">
           <h1 className="text-[10rem] font-bold">Shop with the best.</h1>
         </div>
       </div>
 
-      <div className="z-[-2] mt-[-8.4rem] relative text-[#2D2727]">
+      <div className="z-[-2] mt-[-8.4rem] relative text-[#f97316]">
         <h1 className="text-[10rem] font-bold">Shop with the best.</h1>
-      </div>
-
-      <div className="flex items-center justify-center bg-[#272829] w-[15rem] text-[#FFF4F4] h-[15rem] absolute bottom-0 right-0">
-        <Link
-          href={session?.user ? '/products' : '/api/auth/signin'}
-          className="text-4xl font-bold cursor-pointer hover:text-orange-500"
-        >
-          SHOP NOW
-        </Link>
       </div>
     </main>
   );

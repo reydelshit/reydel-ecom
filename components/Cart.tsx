@@ -48,7 +48,7 @@ export function Cart() {
   return (
     <div className="flex flex-col">
       {cart.length === 0 ? (
-        <div className="flex justify-center flex-col items-center">
+        <div className="flex justify-center flex-col items-center dark:border-[#241e1c]">
           <LoadingCarts />
           <p className="ml-2">Cart is empty or Loading Cart...</p>
         </div>

@@ -28,7 +28,10 @@ export default function ProductForm() {
           type="text"
           placeholder="Product Name"
         />
-        <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+        <Label
+          className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+          htmlFor="product"
+        >
           Ex. Iphone 13
         </Label>
 
@@ -46,7 +49,10 @@ export default function ProductForm() {
           </Select>
         </div>
 
-        <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+        <Label
+          className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+          htmlFor="product"
+        >
           Ex. Phone
         </Label>
         <Input
@@ -55,11 +61,17 @@ export default function ProductForm() {
           type="text"
           placeholder="Description"
         />
-        <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+        <Label
+          className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+          htmlFor="product"
+        >
           Ex. Very cool iphone
         </Label>
         <Input name="price" className="mb-4" type="text" placeholder="Price" />
-        <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+        <Label
+          className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+          htmlFor="product"
+        >
           Ex. $99
         </Label>
         <Input
@@ -68,7 +80,10 @@ export default function ProductForm() {
           type="text"
           placeholder="Image url"
         />
-        <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+        <Label
+          className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+          htmlFor="product"
+        >
           Ex. https://yourimagelink.com
         </Label>
         <Button className="w-[50%] self-center">Add Product</Button>

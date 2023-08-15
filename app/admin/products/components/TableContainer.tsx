@@ -25,7 +25,7 @@ export default function TableContainer({
   handleShowModal,
 }: TableProps) {
   return (
-    <TableRow key={product.id}>
+    <TableRow className="dark:border-[#241e1c]" key={product.id}>
       <TableCell className="font-medium">{product.id}</TableCell>
       <TableCell className="font-medium">
         <img

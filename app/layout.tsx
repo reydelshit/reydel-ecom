@@ -20,13 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <body className={inter.className}>
+        <body className={`${inter.className} dark:bg-[#0c0a09]`}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
             {children}
             <footer>copyright reydel ecom 2023</footer>
-          </body>
-        </ThemeProvider>
+          </ThemeProvider>
+        </body>
       </AuthProvider>
     </html>
   );

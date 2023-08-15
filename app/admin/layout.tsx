@@ -42,7 +42,7 @@ const AdminLayout = async ({ children }: AdminLayoutProps) => {
 
       <div className="flex">
         <SideBar links={sideBarLinks} />
-        <Suspense fallback={<Loading />}> {children}</Suspense>
+        <Suspense> {children}</Suspense>
       </div>
     </div>
   );

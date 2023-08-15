@@ -63,7 +63,7 @@ export default function UpdateProductForm({
   };
 
   return (
-    <div className="absolute w-full h-screen flex justify-center border-2 p-2 bg-white">
+    <div className="absolute w-full h-screen flex justify-center bg-white dark:bg-[#0c0a09]">
       <form className="flex flex-col w-[40%] h-full mt-[5rem]">
         <Input
           defaultValue={productName}
@@ -73,7 +73,10 @@ export default function UpdateProductForm({
           placeholder="Product Name"
           onChange={(e) => setProductName(e.target.value)}
         />
-        <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+        <Label
+          className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+          htmlFor="product"
+        >
           Ex. Iphone 13
         </Label>
 
@@ -90,7 +93,10 @@ export default function UpdateProductForm({
             </SelectContent>
           </Select>
 
-          <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+          <Label
+            className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+            htmlFor="product"
+          >
             Ex. Phone
           </Label>
         </div>
@@ -103,7 +109,10 @@ export default function UpdateProductForm({
           placeholder="Description"
           onChange={(e) => setProductDescription(e.target.value)}
         />
-        <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+        <Label
+          className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+          htmlFor="product"
+        >
           Ex. Very cool iphone
         </Label>
         <Input
@@ -114,7 +123,10 @@ export default function UpdateProductForm({
           placeholder="Price"
           onChange={(e) => setPrice(e.target.value)}
         />
-        <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+        <Label
+          className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+          htmlFor="product"
+        >
           Ex. $99
         </Label>
         <Input
@@ -125,21 +137,24 @@ export default function UpdateProductForm({
           placeholder="Image url"
           onChange={(e) => setImage(e.target.value)}
         />
-        <Label className="pb-4 text-gray-500 pl-2" htmlFor="product">
+        <Label
+          className="pb-4 text-gray-500 dark:text-[#9b7366] pl-2"
+          htmlFor="product"
+        >
           Ex. https://yourimagelink.com
         </Label>
-        <Button
-          className="w-[50%] self-center mt-5"
-          onClick={handleUpdateSubmit}
-        >
-          Update
-        </Button>
-        <Button
-          className="w-[50%] self-center bg-red-500 mt-2"
-          onClick={() => setShowUpdateModal(false)}
-        >
-          Cancel
-        </Button>
+
+        <div className="flex gap-2 items-center justify-center mt-5">
+          <Button
+            className="w-[40%] self-center"
+            onClick={() => setShowUpdateModal(false)}
+          >
+            Cancel
+          </Button>
+          <Button className="w-[40%] self-center" onClick={handleUpdateSubmit}>
+            Update
+          </Button>
+        </div>
       </form>
     </div>
   );

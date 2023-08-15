@@ -27,7 +27,7 @@ export default function ListProducts({
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="grid grid-cols-4 gap-2 w-full border-2 h-full p-2">
+    <div className="grid grid-cols-5 gap-2 w-full h-full p-2 bg-inherit">
       {products
         .filter((prod) => {
           const categoryFilter =
@@ -40,7 +40,10 @@ export default function ListProducts({
         })
         .map((prod, index) => {
           return (
-            <Card key={prod.id} className="w-[20rem] h-[26rem]">
+            <Card
+              key={prod.id}
+              className="w-[20rem] h-[26rem] dark:border-[#241e1c]"
+            >
               <CardHeader>
                 <CardTitle>{prod.name}</CardTitle>
                 <CardDescription>
@@ -56,13 +59,13 @@ export default function ListProducts({
                 />
               </CardContent>
               <CardFooter className="flex flex-col mt-[-2rem]">
-                <div className="flex justify-between items-center w-full border-2">
+                <div className="flex justify-between items-center w-full">
                   <p>₱{prod.price}</p>
 
-                  <input
+                  <Input
                     type="number"
                     placeholder="quantity"
-                    className="border-2 w-[4rem] text-center h-[3rem]"
+                    className=" w-[4rem] text-center h-[3rem]"
                     onChange={(e) => setQuantity(parseInt(e.target.value))}
                   />
                 </div>

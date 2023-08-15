@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { getAllProducts } from './actions/getAllProducts';
 import ListProducts from './components/ListProducts';
 import { useEffect, useState } from 'react';
+import { Input } from '@/components/ui/input';
 
 interface Product {
   id: number;
@@ -40,7 +41,7 @@ export default function Page() {
   return (
     <div className="p-2">
       <div className="h-[5rem] w-full flex justify-between items-center">
-        <input
+        <Input
           type="text"
           placeholder="search product"
           className="h-[3rem] w-[20rem] px-2 rounded-sm"

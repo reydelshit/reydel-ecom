@@ -17,7 +17,7 @@ export default function SideBar({ links }: SideBarProps) {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col border-r-2 p-4 h-screen w-[20rem]">
+    <div className="flex flex-col border-r-2 dark:border-r-[#241e1c] p-4 h-screen w-[20rem]">
       {links.map((link, index) => {
         return (
           <Button
@@ -28,7 +28,7 @@ export default function SideBar({ links }: SideBarProps) {
               pathname == link.link
                 ? 'bg-muted hover:bg-muted'
                 : 'hover:bg-transparent'
-            } text-black p-2 justify-start`}
+            }  p-2 justify-start`}
           >
             {/* <Link onClick={() => router.push(link.link)} href={link.link}> */}
             {link.name}

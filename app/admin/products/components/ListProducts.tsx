@@ -81,7 +81,7 @@ export default function ListProducts({ searchValue }: { searchValue: string }) {
       {products.length === 0 ? (
         <LoadingProducts />
       ) : (
-        <div className="flex flex-col relative w-full">
+        <div className="flex flex-col relative w-full dark:border-[#241e1c]">
           <div className="self-end mb-4">
             <Select onValueChange={handleCategory}>
               <SelectTrigger className="w-[180px]">
