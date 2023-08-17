@@ -60,6 +60,22 @@ model OrderedProducts{
   @@map("ordered_products")
 }
 
+model UserAddress{
+  id                    Int @id @default(autoincrement())
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  address               String
+  city                  String
+  state                 String
+  country               String
+  zip                   String
+
+  user                  User?      @relation(fields: [userId], references: [id])
+  userId                String?
+
+  @@map("user_addresses")
+}
+
 
 model User {
   id                    String     @id @default(uuid())
@@ -75,7 +91,7 @@ model User {
   products              Product[]
   carts                 Cart[]
   orderedProducts       OrderedProducts[]
-
+  userAddresses         UserAddress[]
 
   @@map("users")
 }
