@@ -19,7 +19,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getAddress } from '../actions/getAddress';
 
 export default function Page() {
   const router = useRouter();
@@ -31,17 +32,42 @@ export default function Page() {
   const [country, setCountry] = useState('');
   const [postalCode, setPostalCode] = useState('');
 
-  async function handleSubmit(formData: FormData) {
-    await addAddress(formData);
-    console.log(formData);
+  // async function handleSubmit(formData: FormData) {
+
+  // }
+
+  const fetchAddress = async () => {
+    const userId = session?.user?.id as string;
+    const userAddress = await getAddress(userId);
+    if (userAddress) {
+      setStreetAddress(userAddress.address);
+      setCity(userAddress.city);
+      setState(userAddress.state);
+      setCountry(userAddress.country);
+      setPostalCode(userAddress.zip);
+    }
+  };
+
+  useEffect(() => {
+    fetchAddress();
+  }, []);
+
+  const handleSubmit = async () => {
+    await addAddress({
+      address: streetAddress,
+      city,
+      state,
+      country,
+      postal: postalCode,
+    });
     router.push('/checkout/payment-method');
 
     console.log('test');
-  }
+  };
 
   return (
     <div className="w-full flex justify-center items-center p-2 border-2">
-      <form className="flex flex-col w-[100%]" action={handleSubmit}>
+      <form className="flex flex-col w-[100%]">
         <Label className="pb-2 text-gray-500 pl-2" htmlFor="name">
           Name:
         </Label>
@@ -126,7 +152,9 @@ export default function Page() {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <Button type="submit">Save and continue</Button>
+              <Button onClick={handleSubmit} type="submit">
+                Save and continue
+              </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
