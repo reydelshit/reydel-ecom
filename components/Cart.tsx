@@ -17,6 +17,7 @@ interface Cart {
   image: string;
   userId?: string | null;
 }
+
 export function Cart() {
   const router = useRouter();
 

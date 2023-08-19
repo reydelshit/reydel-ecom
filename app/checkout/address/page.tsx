@@ -45,6 +45,12 @@ export default function Page() {
       setState(userAddress.state);
       setCountry(userAddress.country);
       setPostalCode(userAddress.zip);
+    } else {
+      setStreetAddress('');
+      setCity('');
+      setState('');
+      setCountry('');
+      setPostalCode('');
     }
   };
 
