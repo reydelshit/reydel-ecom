@@ -11,6 +11,7 @@ export async function getAllProductsCart() {
   const getProductCart = await prisma.cart.findMany({
     where: {
       userId: String(userId),
+      ordered: false,
     },
   });
 

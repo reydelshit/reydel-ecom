@@ -55,9 +55,9 @@ export function Cart() {
         </div>
       ) : (
         <>
-          {cart.map((prod) => {
+          {cart.map((prod, index) => {
             return (
-              <div className="flex items-center mb-2">
+              <div key={index} className="flex items-center mb-2">
                 <Avatar className="h-9 w-9">
                   <AvatarImage src={prod.image} alt="Avatar" />
                   <AvatarFallback>{prod.name}</AvatarFallback>

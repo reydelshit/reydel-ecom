@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { getAddress } from '../actions/getAddress';
 import { useSession } from 'next-auth/react';
+import { confirmedOrder } from '../actions/confirmOrder';
 
 interface Cart {
   id: number;
@@ -61,6 +62,18 @@ export default function Page() {
     const addressData = await getAddress(userId);
     if (addressData) {
       setAddress([addressData]);
+    }
+  };
+
+  const handleConfirmedOrders = async (cart: any) => {
+    for (const prod of cart) {
+      await confirmedOrder({
+        productId: prod.id,
+        name: prod.name,
+        quantity: prod.quantity,
+        image: prod.image,
+        price: prod.price,
+      });
     }
   };
 
@@ -128,7 +141,9 @@ export default function Page() {
           </div>
         </div>
 
-        <Button className="mt-8">Confirm Order</Button>
+        <Button className="mt-8" onClick={() => handleConfirmedOrders(cart)}>
+          Confirm Order
+        </Button>
       </div>
     </div>
   );
