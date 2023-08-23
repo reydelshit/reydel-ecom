@@ -49,11 +49,14 @@ model OrderedProducts{
   id                    Int @id @default(autoincrement())
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
-  productId             Int
+  cartId                Int
   quantity              Int
   name                  String
   price                 Float
   image                 String
+  delivered             Boolean @default(false)
+  deliveredAt           DateTime?
+  orderedGroupDate      DateTime?
 
   user                  User?      @relation(fields: [userId], references: [id])
   userId                String?

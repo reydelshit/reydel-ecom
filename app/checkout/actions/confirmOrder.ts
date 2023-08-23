@@ -7,13 +7,13 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
 export async function confirmedOrder({
-  productId,
+  cartId,
   name,
   quantity,
   image,
   price,
 }: {
-  productId: number;
+  cartId: number;
   name: string;
   quantity: number;
   image: string;
@@ -24,12 +24,22 @@ export async function confirmedOrder({
   const userId = session?.user?.id;
   await prisma.orderedProducts.create({
     data: {
-      productId,
+      cartId,
       name,
       quantity,
       price,
       image,
       userId,
+      orderedGroupDate: new Date(),
+    },
+  });
+
+  await prisma.cart.updateMany({
+    where: {
+      userId: userId,
+    },
+    data: {
+      ordered: true,
     },
   });
 

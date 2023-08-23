@@ -68,7 +68,7 @@ export default function Page() {
   const handleConfirmedOrders = async (cart: any) => {
     for (const prod of cart) {
       await confirmedOrder({
-        productId: prod.id,
+        cartId: prod.id,
         name: prod.name,
         quantity: prod.quantity,
         image: prod.image,
